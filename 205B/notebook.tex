@@ -141,7 +141,7 @@
     \def\gt{>}
     \def\lt{<}
     % Document parameters
-    \title{HW4}
+    \title{HW5}
     
     
     
@@ -288,7 +288,7 @@
 \end{Verbatim}
 
 
-    \section{Question \#1 (a)}\label{question-1-a}
+    \section{Question \#5 (a)}\label{question-5-a}
 
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{n}{raw\PYZus{}data} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Koop\PYZhy{}Tobias.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
@@ -329,8 +329,8 @@
 Dep. Variable:                LOGWAGE   R-squared:                       0.176
 Model:                            OLS   Adj. R-squared:                  0.176
 Method:                 Least Squares   F-statistic:                     546.6
-Date:                Wed, 27 Feb 2019   Prob (F-statistic):               0.00
-Time:                        23:24:58   Log-Likelihood:                -12255.
+Date:                Tue, 12 Mar 2019   Prob (F-statistic):               0.00
+Time:                        01:32:07   Log-Likelihood:                -12255.
 No. Observations:               17919   AIC:                         2.453e+04
 Df Residuals:                   17911   BIC:                         2.459e+04
 Df Model:                           7                                         
@@ -358,132 +358,126 @@ Warnings:
 
     \end{Verbatim}
 
-    \paragraph{marginal effect}\label{marginal-effect}
+    \paragraph{variable selection}\label{variable-selection}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{X\PYZus{}bar} \PY{o}{=} \PY{n}{X}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
-        \PY{n}{X\PYZus{}bar}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{BRKNHOME}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{0}
-        \PY{n}{X\PYZus{}bar}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{EDUC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{12}
-\end{Verbatim}
-
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{X\PYZus{}bar} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{asarray}\PY{p}{(}\PY{n}{X\PYZus{}bar}\PY{p}{)}
-        \PY{n}{coef} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{asarray}\PY{p}{(}\PY{n}{results}\PY{o}{.}\PY{n}{params}\PY{p}{)}
-\end{Verbatim}
-
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}7}]:} \PY{n}{np}\PY{o}{.}\PY{n}{exp}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{matmul}\PY{p}{(}\PY{n}{X\PYZus{}bar}\PY{p}{,} \PY{n}{coef}\PY{p}{)}\PY{p}{)}\PY{o}{*}\PY{n}{results}\PY{o}{.}\PY{n}{params}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
-\end{Verbatim}
-
-
-\begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}7}]:} 0.6800472008090137
-\end{Verbatim}
-            
-    \section{Question \#1 (b)}\label{question-1-b}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{X}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{EDUC\PYZus{}2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{power}\PY{p}{(}\PY{n}{X}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{EDUC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
-        \PY{n}{X}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{EDUC\PYZus{}3}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{power}\PY{p}{(}\PY{n}{X}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{EDUC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}4}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{feature\PYZus{}selection} \PY{k}{import} \PY{n}{RFE}
+        \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{feature\PYZus{}selection} \PY{k}{import} \PY{n}{f\PYZus{}regression}
+        \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Feature ranking with recursive feature elimination.}
         
-        \PY{n}{results\PYZus{}2} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{OLS}\PY{p}{(}\PY{n}{y}\PY{p}{,} \PY{n}{X}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{p}{)}
-        \PY{n}{R} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        \PY{l+s+sd}{Given an external estimator that assigns weights to features (e.g., the coefficients of a linear model), the goal of recursive feature elimination (RFE) is to select features by recursively considering smaller and smaller sets of features. First, the estimator is trained on the initial set of features and the importance of each feature is obtained either through a coef\PYZus{} attribute or through a feature\PYZus{}importances\PYZus{} attribute. Then, the least important features are pruned from current set of features. That procedure is recursively repeated on the pruned set until the desired number of features to select is eventually reached.}
+        \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{n}{lm} \PY{o}{=} \PY{n}{LinearRegression}\PY{p}{(}\PY{p}{)}
+        \PY{n}{rfe} \PY{o}{=} \PY{n}{RFE}\PY{p}{(}\PY{n}{lm}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{)} 
+        \PY{n}{rfe} \PY{o}{=} \PY{n}{rfe}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{rfe}\PY{o}{.}\PY{n}{support\PYZus{}}\PY{p}{)} 
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{rfe}\PY{o}{.}\PY{n}{ranking\PYZus{}}\PY{p}{)}  
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}9}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{results\PYZus{}2}\PY{o}{.}\PY{n}{summary}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+[False  True  True  True  True  True  True  True]
+[2 1 1 1 1 1 1 1]
+
+    \end{Verbatim}
+
+    \paragraph{linearity}\label{linearity}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{y\PYZus{}fit} \PY{o}{=} \PY{n}{results}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{X}\PY{p}{)}
+        \PY{n}{y\PYZus{}fit\PYZus{}2} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{power}\PY{p}{(}\PY{n}{y\PYZus{}fit}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+        \PY{n}{y\PYZus{}fit\PYZus{}3} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{power}\PY{p}{(}\PY{n}{y\PYZus{}fit}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}
+        \PY{n}{y\PYZus{}fit\PYZus{}4} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{power}\PY{p}{(}\PY{n}{y\PYZus{}fit}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}
+        \PY{n}{X\PYZus{}ramsey} \PY{o}{=} \PY{n}{X}
+        \PY{n}{X\PYZus{}ramsey}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y\PYZus{}fit\PYZus{}2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{power}\PY{p}{(}\PY{n}{y\PYZus{}fit}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+        \PY{n}{X\PYZus{}ramsey}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y\PYZus{}fit\PYZus{}3}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{power}\PY{p}{(}\PY{n}{y\PYZus{}fit}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}
+        \PY{n}{X\PYZus{}ramsey}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y\PYZus{}fit\PYZus{}4}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{power}\PY{p}{(}\PY{n}{y\PYZus{}fit}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}
+        
+        \PY{n}{results\PYZus{}ramsey} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{OLS}\PY{p}{(}\PY{n}{y}\PY{p}{,} \PY{n}{X\PYZus{}ramsey}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{p}{)}
+        
+        \PY{n}{R} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{results\PYZus{}ramsey}\PY{o}{.}\PY{n}{f\PYZus{}test}\PY{p}{(}\PY{n}{R}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+<F test: F=array([[4.81049277]]), p=0.0023789976820426007, df\_denom=17908, df\_num=3>
+
+    \end{Verbatim}
+
+    \paragraph{heteroskedasticity}\label{heteroskedasticity}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{u\PYZus{}fit} \PY{o}{=} \PY{n}{y} \PY{o}{\PYZhy{}} \PY{n}{y\PYZus{}fit}
+        \PY{n}{u\PYZus{}fit\PYZus{}2} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{power}\PY{p}{(}\PY{n}{u\PYZus{}fit}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+        \PY{n}{x\PYZus{}bp} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{add\PYZus{}constant}\PY{p}{(}\PY{n}{y\PYZus{}fit}\PY{p}{)}
+        \PY{n}{x\PYZus{}white} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{p}{)}
+        \PY{n}{x\PYZus{}white}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y\PYZus{}fit}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{y\PYZus{}fit}
+        \PY{n}{x\PYZus{}white}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y\PYZus{}fit\PYZus{}2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{y\PYZus{}fit\PYZus{}2}
+        \PY{n}{x\PYZus{}white} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{add\PYZus{}constant}\PY{p}{(}\PY{n}{x\PYZus{}white}\PY{p}{)}
+        
+        \PY{n}{results\PYZus{}bp} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{OLS}\PY{p}{(}\PY{n}{u\PYZus{}fit\PYZus{}2}\PY{p}{,} \PY{n}{x\PYZus{}bp}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{p}{)}
+        \PY{n}{results\PYZus{}white} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{OLS}\PY{p}{(}\PY{n}{u\PYZus{}fit\PYZus{}2}\PY{p}{,} \PY{n}{x\PYZus{}white}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{p}{)}
+        
+        \PY{n}{R} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{results\PYZus{}bp}\PY{o}{.}\PY{n}{summary}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{results\PYZus{}white}\PY{o}{.}\PY{n}{summary}\PY{p}{(}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:                LOGWAGE   R-squared:                       0.177
-Model:                            OLS   Adj. R-squared:                  0.177
-Method:                 Least Squares   F-statistic:                     428.9
-Date:                Wed, 27 Feb 2019   Prob (F-statistic):               0.00
-Time:                        23:24:58   Log-Likelihood:                -12240.
-No. Observations:               17919   AIC:                         2.450e+04
-Df Residuals:                   17909   BIC:                         2.458e+04
-Df Model:                           9                                         
-Covariance Type:            nonrobust                                         
-==============================================================================
-                 coef    std err          t      P>|t|      [0.025      0.975]
-------------------------------------------------------------------------------
-const          1.3650      0.440      3.102      0.002       0.502       2.228
-EDUC          -0.0601      0.099     -0.606      0.545      -0.254       0.134
-POTEXPER       0.0396      0.001     44.060      0.000       0.038       0.041
-ABILITY        0.0741      0.005     14.908      0.000       0.064       0.084
-MOTHERED       0.0003      0.002      0.182      0.855      -0.003       0.004
-FATHERED       0.0052      0.001      3.865      0.000       0.003       0.008
-BRKNHOME      -0.0499      0.010     -4.990      0.000      -0.070      -0.030
-SIBLINGS       0.0048      0.002      2.707      0.007       0.001       0.008
-EDUC\_2         0.0131      0.007      1.780      0.075      -0.001       0.028
-EDUC\_3        -0.0004      0.000     -2.214      0.027      -0.001   -4.55e-05
-==============================================================================
-Omnibus:                     1114.698   Durbin-Watson:                   0.805
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):             2107.537
-Skew:                          -0.456   Prob(JB):                         0.00
-Kurtosis:                       4.411   Cond. No.                     3.08e+05
-==============================================================================
-
-Warnings:
-[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[2] The condition number is large, 3.08e+05. This might indicate that there are
-strong multicollinearity or other numerical problems.
-
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}10}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{results\PYZus{}2}\PY{o}{.}\PY{n}{f\PYZus{}test}\PY{p}{(}\PY{n}{R}\PY{p}{)}\PY{p}{)}
-\end{Verbatim}
-
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-<F test: F=array([[14.34648984]]), p=5.948185372443663e-07, df\_denom=17909, df\_num=2>
-
-    \end{Verbatim}
-
-    \section{Question \#1 (c)}\label{question-1-c}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{X} \PY{o}{=} \PY{n}{raw\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{EDUC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
-         \PY{n}{X} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{add\PYZus{}constant}\PY{p}{(}\PY{n}{X}\PY{p}{)}
-         
-         \PY{n}{y} \PY{o}{=} \PY{n}{raw\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{LOGWAGE}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
-         \PY{n}{results\PYZus{}3} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{OLS}\PY{p}{(}\PY{n}{y}\PY{p}{,} \PY{n}{X}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{p}{)}
-         
-         \PY{n}{y\PYZus{}pred} \PY{o}{=} \PY{n}{results\PYZus{}3}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{X}\PY{p}{)}
-         \PY{n}{lin\PYZus{}params} \PY{o}{=} \PY{n}{results\PYZus{}3}\PY{o}{.}\PY{n}{params}
-         \PY{n+nb}{print}\PY{p}{(}\PY{n}{results\PYZus{}3}\PY{o}{.}\PY{n}{summary}\PY{p}{(}\PY{p}{)}\PY{p}{)}
-\end{Verbatim}
-
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-                            OLS Regression Results                            
-==============================================================================
-Dep. Variable:                LOGWAGE   R-squared:                       0.077
-Model:                            OLS   Adj. R-squared:                  0.077
-Method:                 Least Squares   F-statistic:                     1497.
-Date:                Wed, 27 Feb 2019   Prob (F-statistic):          1.39e-314
-Time:                        23:24:58   Log-Likelihood:                -13270.
-No. Observations:               17919   AIC:                         2.654e+04
-Df Residuals:                   17917   BIC:                         2.656e+04
+Dep. Variable:                      y   R-squared:                       0.005
+Model:                            OLS   Adj. R-squared:                  0.005
+Method:                 Least Squares   F-statistic:                     82.33
+Date:                Tue, 12 Mar 2019   Prob (F-statistic):           1.27e-19
+Time:                        01:32:07   Log-Likelihood:                -9988.0
+No. Observations:               17919   AIC:                         1.998e+04
+Df Residuals:                   17917   BIC:                         2.000e+04
 Df Model:                           1                                         
 Covariance Type:            nonrobust                                         
 ==============================================================================
                  coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------
-const          1.3296      0.025     52.589      0.000       1.280       1.379
-EDUC           0.0763      0.002     38.690      0.000       0.072       0.080
+const         -0.0669      0.033     -2.037      0.042      -0.131      -0.003
+0              0.1292      0.014      9.074      0.000       0.101       0.157
 ==============================================================================
-Omnibus:                      578.200   Durbin-Watson:                   0.793
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):              878.367
-Skew:                          -0.319   Prob(JB):                    1.84e-191
-Kurtosis:                       3.878   Cond. No.                         86.0
+Omnibus:                    17598.460   Durbin-Watson:                   1.305
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):           991386.529
+Skew:                           4.830   Prob(JB):                         0.00
+Kurtosis:                      38.135   Cond. No.                         28.5
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                      y   R-squared:                       0.005
+Model:                            OLS   Adj. R-squared:                  0.004
+Method:                 Least Squares   F-statistic:                     41.24
+Date:                Tue, 12 Mar 2019   Prob (F-statistic):           1.35e-18
+Time:                        01:32:07   Log-Likelihood:                -9987.9
+No. Observations:               17919   AIC:                         1.998e+04
+Df Residuals:                   17916   BIC:                         2.001e+04
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const          0.0373      0.271      0.138      0.891      -0.494       0.568
+y\_fit          0.0378      0.236      0.160      0.873      -0.425       0.501
+y\_fit\_2        0.0199      0.051      0.388      0.698      -0.081       0.120
+==============================================================================
+Omnibus:                    17595.972   Durbin-Watson:                   1.305
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):           990671.183
+Skew:                           4.829   Prob(JB):                         0.00
+Kurtosis:                      38.122   Cond. No.                         686.
 ==============================================================================
 
 Warnings:
@@ -492,61 +486,87 @@ Warnings:
     \end{Verbatim}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}12}]:} \PY{k+kn}{from} \PY{n+nn}{statsmodels}\PY{n+nn}{.}\PY{n+nn}{nonparametric}\PY{n+nn}{.}\PY{n+nn}{kernel\PYZus{}regression} \PY{k}{import} \PY{n}{KernelReg}
-         \PY{n}{X} \PY{o}{=} \PY{n}{raw\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{EDUC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
-         \PY{n}{bw} \PY{o}{=} \PY{p}{[}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{std}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{ddof}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{o}{*} \PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}\PY{p}{]}
-         
-         \PY{n}{results\PYZus{}4} \PY{o}{=} \PY{n}{KernelReg}\PY{p}{(}\PY{n}{y}\PY{p}{,} \PY{n}{X}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{c}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{n}{reg\PYZus{}type}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{lc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{bw}\PY{o}{=}\PY{n}{bw}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{p}{)}
-         \PY{n}{y\PYZus{}pred\PYZus{}np} \PY{o}{=} \PY{n}{results\PYZus{}4}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n+nb}{print}\PY{p}{(}\PY{n}{results\PYZus{}white}\PY{o}{.}\PY{n}{f\PYZus{}test}\PY{p}{(}\PY{n}{R}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}15}]:} \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
-         
-         \PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{p}{)}
-         \PY{n}{fig}\PY{o}{.}\PY{n}{set\PYZus{}size\PYZus{}inches}\PY{p}{(}\PY{l+m+mf}{18.5}\PY{p}{,} \PY{l+m+mf}{10.5}\PY{p}{)}
-         
-         \PY{n}{new\PYZus{}x\PYZus{}1}\PY{p}{,} \PY{n}{new\PYZus{}y\PYZus{}1} \PY{o}{=} \PY{n+nb}{zip}\PY{p}{(}\PY{o}{*}\PY{n+nb}{sorted}\PY{p}{(}\PY{n+nb}{zip}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y\PYZus{}pred}\PY{p}{)}\PY{p}{)}\PY{p}{)}
-         \PY{n}{new\PYZus{}x\PYZus{}2}\PY{p}{,} \PY{n}{new\PYZus{}y\PYZus{}2} \PY{o}{=} \PY{n+nb}{zip}\PY{p}{(}\PY{o}{*}\PY{n+nb}{sorted}\PY{p}{(}\PY{n+nb}{zip}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y\PYZus{}pred\PYZus{}np}\PY{p}{)}\PY{p}{)}\PY{p}{)}
-         
-         \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{o}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Data}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-         \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{new\PYZus{}x\PYZus{}1}\PY{p}{,} \PY{n}{new\PYZus{}y\PYZus{}1}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Linear Predict}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{linestyle}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{dotted}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-         \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{new\PYZus{}x\PYZus{}2}\PY{p}{,} \PY{n}{new\PYZus{}y\PYZus{}2}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Non\PYZhy{}parametric}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-         
-         \PY{n}{ax}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{best}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+<F test: F=array([[41.24043977]]), p=1.3508472578390087e-18, df\_denom=17916, df\_num=2>
+
+    \end{Verbatim}
+
+    \paragraph{multicollinearity}\label{multicollinearity}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{k+kn}{from} \PY{n+nn}{statsmodels}\PY{n+nn}{.}\PY{n+nn}{stats}\PY{n+nn}{.}\PY{n+nn}{outliers\PYZus{}influence} \PY{k}{import} \PY{n}{variance\PYZus{}inflation\PYZus{}factor} \PY{k}{as} \PY{n}{vif}
+        \PY{n}{X} \PY{o}{=} \PY{n}{raw\PYZus{}data}\PY{o}{.}\PY{n}{drop}\PY{p}{(}\PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{PERSONID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{LOGWAGE}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{TIMETRND}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+        \PY{n}{X} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{add\PYZus{}constant}\PY{p}{(}\PY{n}{X}\PY{p}{)}
+        \PY{n}{x\PYZus{}matrix} \PY{o}{=} \PY{n}{X}\PY{o}{.}\PY{n}{values}
+        \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{X}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{vif}\PY{p}{(}\PY{n}{x\PYZus{}matrix}\PY{p}{,}\PY{n}{i}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+1.4668680874104125
+1.071586657183698
+1.6263334856728235
+2.0003700037781957
+1.9787587704634118
+1.0122740048939267
+1.1243151384654102
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{X}\PY{o}{.}\PY{n}{corr}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}15}]:} <matplotlib.legend.Legend at 0x20326690748>
+{\color{outcolor}Out[{\color{outcolor}10}]:}            const      EDUC  POTEXPER   ABILITY  MOTHERED  FATHERED  BRKNHOME  \textbackslash{}
+         const        NaN       NaN       NaN       NaN       NaN       NaN       NaN   
+         EDUC         NaN  1.000000 -0.218704  0.527899  0.347798  0.373626 -0.107157   
+         POTEXPER     NaN -0.218704  1.000000 -0.222156 -0.140324 -0.147247  0.024923   
+         ABILITY      NaN  0.527899 -0.222156  1.000000  0.450126  0.449160 -0.060873   
+         MOTHERED     NaN  0.347798 -0.140324  0.450126  1.000000  0.678523 -0.030638   
+         FATHERED     NaN  0.373626 -0.147247  0.449160  0.678523  1.000000 -0.051096   
+         BRKNHOME     NaN -0.107157  0.024923 -0.060873 -0.030638 -0.051096  1.000000   
+         SIBLINGS     NaN -0.187302  0.111327 -0.242717 -0.301923 -0.255517  0.030289   
+         
+                    SIBLINGS   
+         const            NaN  
+         EDUC       -0.187302  
+         POTEXPER    0.111327  
+         ABILITY    -0.242717  
+         MOTHERED   -0.301923  
+         FATHERED   -0.255517  
+         BRKNHOME    0.030289  
+         SIBLINGS    1.000000  
 \end{Verbatim}
             
-    \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_15_1.png}
-    \end{center}
-    { \hspace*{\fill} \\}
-    
+    \paragraph{outlier}\label{outlier}
+
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}16}]:} \PY{n}{marginal\PYZus{}effect} \PY{o}{=} \PY{n}{results\PYZus{}4}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{*}\PY{l+m+mi}{100}
+{\color{incolor}In [{\color{incolor}11}]:} \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+         \PY{n}{results} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{OLS}\PY{p}{(}\PY{n}{y}\PY{p}{,} \PY{n}{X}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{p}{)}
+         \PY{n}{influence} \PY{o}{=} \PY{n}{results}\PY{o}{.}\PY{n}{get\PYZus{}influence}\PY{p}{(}\PY{p}{)}
+         \PY{c+c1}{\PYZsh{}c is the distance and p is p\PYZhy{}value}
+         \PY{p}{(}\PY{n}{c}\PY{p}{,} \PY{n}{p}\PY{p}{)} \PY{o}{=} \PY{n}{influence}\PY{o}{.}\PY{n}{cooks\PYZus{}distance}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}18}]:} \PY{n}{fig}\PY{p}{,} \PY{n}{ax\PYZus{}2} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{p}{)}
-         \PY{n}{fig}\PY{o}{.}\PY{n}{set\PYZus{}size\PYZus{}inches}\PY{p}{(}\PY{l+m+mf}{18.5}\PY{p}{,} \PY{l+m+mf}{10.5}\PY{p}{)}
-         \PY{c+c1}{\PYZsh{}ax.plot(X, y, \PYZsq{}o\PYZsq{}, label=\PYZdq{}Data\PYZdq{})}
-         \PY{n}{new\PYZus{}x}\PY{p}{,} \PY{n}{new\PYZus{}y} \PY{o}{=} \PY{n+nb}{zip}\PY{p}{(}\PY{o}{*}\PY{n+nb}{sorted}\PY{p}{(}\PY{n+nb}{zip}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{marginal\PYZus{}effect}\PY{p}{)}\PY{p}{)}\PY{p}{)}
-         
-         \PY{n}{ax\PYZus{}2}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{new\PYZus{}x}\PY{p}{,} \PY{n}{new\PYZus{}y}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Non\PYZhy{}parametric}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-         \PY{c+c1}{\PYZsh{}ax\PYZus{}2.plot(X, np.full(X.shape, lin\PYZus{}params[1]), \PYZsq{}g\PYZsq{}, label=\PYZdq{}Linear\PYZdq{}, linestyle=\PYZsq{}dashed\PYZsq{})}
-         
-         \PY{n}{ax\PYZus{}2}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{best}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{)}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylim}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mf}{0.006}\PY{p}{]}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Distance}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{16}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{c}\PY{p}{)}\PY{p}{)}\PY{p}{,}\PY{n}{c}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{c}\PY{p}{)}\PY{p}{)}\PY{p}{,}\PY{n}{np}\PY{o}{.}\PY{n}{full}\PY{p}{(}\PY{n}{c}\PY{o}{.}\PY{n}{shape}\PY{p}{,}\PY{l+m+mi}{4}\PY{o}{/}\PY{n+nb}{len}\PY{p}{(}\PY{n}{c}\PY{p}{)}\PY{p}{,}\PY{n}{dtype}\PY{o}{=}\PY{n+nb}{float}\PY{p}{)}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}18}]:} <matplotlib.legend.Legend at 0x20326717c18>
+{\color{outcolor}Out[{\color{outcolor}12}]:} [<matplotlib.lines.Line2D at 0x26fb21644a8>]
 \end{Verbatim}
             
     \begin{center}
@@ -554,383 +574,236 @@ Warnings:
     \end{center}
     { \hspace*{\fill} \\}
     
-    \section{Question \#2}\label{question-2}
-
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}19}]:} \PY{n}{raw\PYZus{}data} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{cps71.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}13}]:} \PY{n}{outlier} \PY{o}{=} \PY{n}{c}\PY{o}{\PYZgt{}}\PY{l+m+mi}{4}\PY{o}{/}\PY{n+nb}{len}\PY{p}{(}\PY{n}{c}\PY{p}{)}
+         \PY{n}{outlier}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}13}]:} 1064
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{k+kn}{from} \PY{n+nn}{statsmodels}\PY{n+nn}{.}\PY{n+nn}{regression}\PY{n+nn}{.}\PY{n+nn}{linear\PYZus{}model} \PY{k}{import} \PY{n}{OLSResults}
+         \PY{n}{outlier} \PY{o}{=} \PY{n}{results}\PY{o}{.}\PY{n}{outlier\PYZus{}test}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}20}]:} \PY{n}{X} \PY{o}{=} \PY{n}{raw\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+{\color{incolor}In [{\color{incolor}15}]:} \PY{n}{outlier}\PY{p}{[}\PY{n}{outlier}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{student\PYZus{}resid}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{abs}\PY{p}{(}\PY{p}{)}\PY{o}{\PYZgt{}}\PY{l+m+mi}{2}\PY{p}{]}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}15}]:} student\_resid    886
+         unadj\_p          886
+         bonf(p)          886
+         dtype: int64
+\end{Verbatim}
+            
+    \paragraph{endogeneity}\label{endogeneity}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{k+kn}{from} \PY{n+nn}{statsmodels}\PY{n+nn}{.}\PY{n+nn}{sandbox}\PY{n+nn}{.}\PY{n+nn}{regression}\PY{n+nn}{.}\PY{n+nn}{gmm} \PY{k}{import} \PY{n}{IV2SLS}
+         \PY{n}{y} \PY{o}{=} \PY{n}{raw\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{LOGWAGE}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{X} \PY{o}{=} \PY{n}{raw\PYZus{}data}\PY{o}{.}\PY{n}{drop}\PY{p}{(}\PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{PERSONID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{LOGWAGE}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{TIMETRND}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{MOTHERED}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{FATHERED}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
          \PY{n}{X} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{add\PYZus{}constant}\PY{p}{(}\PY{n}{X}\PY{p}{)}
-         \PY{n}{y} \PY{o}{=} \PY{n}{raw\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{logwage}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
-         
-         \PY{n}{results} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{OLS}\PY{p}{(}\PY{n}{y}\PY{p}{,} \PY{n}{X}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{p}{)}
-         \PY{n}{lin\PYZus{}params} \PY{o}{=} \PY{n}{results}\PY{o}{.}\PY{n}{params}
-         
-         \PY{n}{y\PYZus{}pred\PYZus{}lin} \PY{o}{=} \PY{n}{results}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{X}\PY{p}{)}
-         
-         \PY{n}{X}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age\PYZus{}2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{power}\PY{p}{(}\PY{n}{raw\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
-         
-         \PY{n}{results\PYZus{}2} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{OLS}\PY{p}{(}\PY{n}{y}\PY{p}{,} \PY{n}{X}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{p}{)}
-         \PY{n}{quad\PYZus{}params} \PY{o}{=} \PY{n}{results\PYZus{}2}\PY{o}{.}\PY{n}{params}
-         
-         \PY{n}{y\PYZus{}pred\PYZus{}quad} \PY{o}{=} \PY{n}{results\PYZus{}2}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{X}\PY{p}{)}
+         \PY{n}{X\PYZus{}iv} \PY{o}{=} \PY{n}{raw\PYZus{}data}\PY{o}{.}\PY{n}{drop}\PY{p}{(}\PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{PERSONID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{LOGWAGE}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{TIMETRND}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{EDUC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+         \PY{n}{resultIV} \PY{o}{=} \PY{n}{IV2SLS}\PY{p}{(}\PY{n}{y}\PY{p}{,} \PY{n}{X}\PY{p}{,} \PY{n}{X\PYZus{}iv}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}21}]:} \PY{n}{bw} \PY{o}{=} \PY{p}{[}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{std}\PY{p}{(}\PY{n}{X}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{ddof}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{o}{*} \PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}\PY{p}{]}
-         \PY{n}{results\PYZus{}3} \PY{o}{=} \PY{n}{KernelReg}\PY{p}{(}\PY{n}{y}\PY{p}{,} \PY{n}{X}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{c}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{reg\PYZus{}type}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{lc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{bw}\PY{o}{=}\PY{n}{bw}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{p}{)}
-         \PY{n}{y\PYZus{}pred\PYZus{}np} \PY{o}{=} \PY{n}{results\PYZus{}3}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
-\end{Verbatim}
-
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}22}]:} \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
-         
-         \PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{p}{)}
-         \PY{n}{fig}\PY{o}{.}\PY{n}{set\PYZus{}size\PYZus{}inches}\PY{p}{(}\PY{l+m+mf}{18.5}\PY{p}{,} \PY{l+m+mf}{10.5}\PY{p}{)}
-         \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{o}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Data}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-         \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{y\PYZus{}pred\PYZus{}lin}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Linear Predict}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{linestyle}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{dotted}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-         \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{y\PYZus{}pred\PYZus{}quad}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{g}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Quadratic Predict}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{linestyle}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{dashed}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-         \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{y\PYZus{}pred\PYZus{}np}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Non\PYZhy{}parametric}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-         
-         \PY{n}{ax}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{best}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}17}]:} \PY{n}{resultIV}\PY{o}{.}\PY{n}{spec\PYZus{}hausman}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}22}]:} <matplotlib.legend.Legend at 0x20326706a58>
+{\color{outcolor}Out[{\color{outcolor}17}]:} (23.773561500875772, 6.880764792902928e-06, 2)
 \end{Verbatim}
             
-    \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_22_1.png}
-    \end{center}
-    { \hspace*{\fill} \\}
-    
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}23}]:} \PY{n}{np\PYZus{}marginal} \PY{o}{=} \PY{n}{results\PYZus{}3}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
-         
-         \PY{n}{fig}\PY{p}{,} \PY{n}{ax\PYZus{}2} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{p}{)}
-         \PY{n}{fig}\PY{o}{.}\PY{n}{set\PYZus{}size\PYZus{}inches}\PY{p}{(}\PY{l+m+mf}{18.5}\PY{p}{,} \PY{l+m+mf}{10.5}\PY{p}{)}
-         \PY{n}{ax\PYZus{}2}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{np\PYZus{}marginal}\PY{o}{*}\PY{l+m+mi}{100}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Non\PYZhy{}parametric}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-         \PY{n}{ax\PYZus{}2}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{full}\PY{p}{(}\PY{n}{X}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{shape}\PY{p}{,} \PY{n}{lin\PYZus{}params}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{g}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Linear}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{linestyle}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{dashed}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-         \PY{n}{ax\PYZus{}2}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{X}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{X}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{*}\PY{n}{quad\PYZus{}params}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{+} \PY{n}{quad\PYZus{}params}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Quadratic}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{linestyle}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{dotted}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-         
-         \PY{n}{ax\PYZus{}2}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{best}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}18}]:} \PY{n}{Z} \PY{o}{=} \PY{n}{raw\PYZus{}data}\PY{o}{.}\PY{n}{drop}\PY{p}{(}\PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{PERSONID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{LOGWAGE}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{TIMETRND}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{EDUC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+         \PY{n}{Z} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{add\PYZus{}constant}\PY{p}{(}\PY{n}{Z}\PY{p}{)}
+         \PY{n}{X\PYZus{}i} \PY{o}{=} \PY{n}{raw\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{EDUC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{results\PYZus{}onestep} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{OLS}\PY{p}{(}\PY{n}{X\PYZus{}i}\PY{p}{,} \PY{n}{Z}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{p}{)}
+         \PY{n}{X\PYZus{}i\PYZus{}fit} \PY{o}{=} \PY{n}{results\PYZus{}onestep}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{Z}\PY{p}{)}
+         \PY{n}{X}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{X\PYZus{}i\PYZus{}fit}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{X\PYZus{}i\PYZus{}fit}
+         \PY{n}{results\PYZus{}twostep} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{OLS}\PY{p}{(}\PY{n}{y}\PY{p}{,} \PY{n}{X}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{p}{)}
+         \PY{n}{results\PYZus{}twostep}\PY{o}{.}\PY{n}{summary}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}23}]:} <matplotlib.legend.Legend at 0x2032708be80>
+{\color{outcolor}Out[{\color{outcolor}18}]:} <class 'statsmodels.iolib.summary.Summary'>
+         """
+                                     OLS Regression Results                            
+         ==============================================================================
+         Dep. Variable:                LOGWAGE   R-squared:                       0.176
+         Model:                            OLS   Adj. R-squared:                  0.176
+         Method:                 Least Squares   F-statistic:                     637.4
+         Date:                Tue, 12 Mar 2019   Prob (F-statistic):               0.00
+         Time:                        01:33:39   Log-Likelihood:                -12256.
+         No. Observations:               17919   AIC:                         2.453e+04
+         Df Residuals:                   17912   BIC:                         2.458e+04
+         Df Model:                           6                                         
+         Covariance Type:            nonrobust                                         
+         ==============================================================================
+                          coef    std err          t      P>|t|      [0.025      0.975]
+         ------------------------------------------------------------------------------
+         const          0.2295      0.173      1.327      0.184      -0.109       0.568
+         EDUC           0.0712      0.002     31.538      0.000       0.067       0.076
+         POTEXPER       0.0423      0.001     38.893      0.000       0.040       0.044
+         ABILITY        0.0228      0.014      1.653      0.098      -0.004       0.050
+         BRKNHOME      -0.0296      0.011     -2.648      0.008      -0.051      -0.008
+         SIBLINGS       0.0066      0.002      3.516      0.000       0.003       0.010
+         X\_i\_fit        0.0626      0.013      4.732      0.000       0.037       0.089
+         ==============================================================================
+         Omnibus:                     1111.748   Durbin-Watson:                   0.804
+         Prob(Omnibus):                  0.000   Jarque-Bera (JB):             2076.662
+         Skew:                          -0.459   Prob(JB):                         0.00
+         Kurtosis:                       4.393   Cond. No.                         979.
+         ==============================================================================
+         
+         Warnings:
+         [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+         """
 \end{Verbatim}
             
-    \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_23_1.png}
-    \end{center}
-    { \hspace*{\fill} \\}
-    
-    \section{Question \#3(a)}\label{question-3a}
+    \section{Question \#5 (b)}\label{question-5-b}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}141}]:} \PY{k+kn}{import} \PY{n+nn}{math}
-          \PY{n}{sample\PYZus{}sizes} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{25}\PY{p}{,} \PY{l+m+mi}{50}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{]} \PY{c+c1}{\PYZsh{}size of sample}
-          \PY{c+c1}{\PYZsh{} y = 4 + 2 * x + error}
-          \PY{c+c1}{\PYZsh{} N error N(0,1)}
-          \PY{c+c1}{\PYZsh{} T error T(4)}
-          \PY{n}{coef\PYZus{}big\PYZus{}mat} \PY{o}{=} \PY{p}{[}\PY{p}{]}
-          \PY{n}{z\PYZus{}big\PYZus{}mat} \PY{o}{=} \PY{p}{[}\PY{p}{]}
-          \PY{n}{t\PYZus{}big\PYZus{}mat} \PY{o}{=} \PY{p}{[}\PY{p}{]}
-          \PY{k}{for} \PY{n}{n} \PY{o+ow}{in} \PY{n}{sample\PYZus{}sizes}\PY{p}{:}
-              \PY{n}{coef\PYZus{}n} \PY{o}{=} \PY{p}{[}\PY{p}{]}
-              \PY{n}{coef\PYZus{}t} \PY{o}{=} \PY{p}{[}\PY{p}{]}
-              \PY{n}{z\PYZus{}n} \PY{o}{=} \PY{p}{[}\PY{p}{]}
-              \PY{n}{z\PYZus{}t} \PY{o}{=} \PY{p}{[}\PY{p}{]}
-              \PY{n}{t\PYZus{}n} \PY{o}{=} \PY{p}{[}\PY{p}{]}
-              \PY{n}{t\PYZus{}t} \PY{o}{=} \PY{p}{[}\PY{p}{]}
-              \PY{k}{for} \PY{n}{t} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1000}\PY{p}{)}\PY{p}{:}
-                  \PY{n}{n\PYZus{}error} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{normal}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{n}{n}\PY{p}{)}
-                  \PY{n}{t\PYZus{}error} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{standard\PYZus{}t}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{n}{n}\PY{p}{)}
-                  \PY{n}{x} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{uniform}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{n}{n}\PY{p}{)}
-                  \PY{n}{y\PYZus{}n} \PY{o}{=} \PY{l+m+mi}{4} \PY{o}{+} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{x} \PY{o}{+} \PY{n}{n\PYZus{}error}
-                  \PY{n}{y\PYZus{}t} \PY{o}{=} \PY{l+m+mi}{4} \PY{o}{+} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{x} \PY{o}{+} \PY{n}{t\PYZus{}error}
-                  \PY{n}{sd} \PY{o}{=} \PY{n}{math}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{l+m+mi}{1}\PY{o}{/}\PY{n}{np}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{power}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}\PY{p}{)}
-                  
-                  \PY{c+c1}{\PYZsh{} N Error}
-                  \PY{n}{result\PYZus{}n} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{OLS}\PY{p}{(}\PY{n}{y\PYZus{}n}\PY{p}{,} \PY{n}{sm}\PY{o}{.}\PY{n}{add\PYZus{}constant}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{p}{)}
-                  \PY{n}{coef\PYZus{}n}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{result\PYZus{}n}\PY{o}{.}\PY{n}{params}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
-                  \PY{n}{z} \PY{o}{=} \PY{p}{(}\PY{n}{result\PYZus{}n}\PY{o}{.}\PY{n}{params}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{\PYZhy{}}\PY{l+m+mi}{0}\PY{p}{)}\PY{o}{/}\PY{n}{sd}
-                  \PY{n}{se} \PY{o}{=} \PY{n}{result\PYZus{}n}\PY{o}{.}\PY{n}{bse}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
-                  \PY{n}{t} \PY{o}{=} \PY{p}{(}\PY{n}{result\PYZus{}n}\PY{o}{.}\PY{n}{params}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{\PYZhy{}}\PY{l+m+mi}{0}\PY{p}{)}\PY{o}{/}\PY{n}{se}
-                  \PY{n}{t\PYZus{}n}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{t}\PY{p}{)}
-                  \PY{n}{z\PYZus{}n}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{z}\PY{p}{)}
-                  
-                  \PY{c+c1}{\PYZsh{} T Error}
-                  \PY{n}{result\PYZus{}t} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{OLS}\PY{p}{(}\PY{n}{y\PYZus{}t}\PY{p}{,} \PY{n}{sm}\PY{o}{.}\PY{n}{add\PYZus{}constant}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{p}{)}
-                  \PY{n}{coef\PYZus{}t}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{result\PYZus{}t}\PY{o}{.}\PY{n}{params}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
-                  \PY{n}{z} \PY{o}{=} \PY{p}{(}\PY{n}{result\PYZus{}t}\PY{o}{.}\PY{n}{params}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{\PYZhy{}}\PY{l+m+mi}{0}\PY{p}{)}\PY{o}{/}\PY{n}{sd}
-                  \PY{n}{se} \PY{o}{=} \PY{n}{result\PYZus{}t}\PY{o}{.}\PY{n}{bse}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
-                  \PY{n}{t} \PY{o}{=} \PY{p}{(}\PY{n}{result\PYZus{}t}\PY{o}{.}\PY{n}{params}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{\PYZhy{}}\PY{l+m+mi}{0}\PY{p}{)}\PY{o}{/}\PY{n}{se}
-                  \PY{n}{t\PYZus{}t}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{t}\PY{p}{)}
-                  \PY{n}{z\PYZus{}t}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{z}\PY{p}{)}
-                  
-              \PY{n}{coef\PYZus{}big\PYZus{}mat}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{[}\PY{n}{coef\PYZus{}n}\PY{p}{,} \PY{n}{coef\PYZus{}t}\PY{p}{]}\PY{p}{)}
-              \PY{n}{z\PYZus{}big\PYZus{}mat}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{[}\PY{n}{z\PYZus{}n}\PY{p}{,} \PY{n}{z\PYZus{}t}\PY{p}{]}\PY{p}{)}
-              \PY{n}{t\PYZus{}big\PYZus{}mat}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{[}\PY{n}{t\PYZus{}n}\PY{p}{,} \PY{n}{t\PYZus{}t}\PY{p}{]}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}19}]:} \PY{k+kn}{import} \PY{n+nn}{patsy}
+         \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+         \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k}{as} \PY{n+nn}{pd}
+         \PY{k+kn}{import} \PY{n+nn}{statsmodels}\PY{n+nn}{.}\PY{n+nn}{api} \PY{k}{as} \PY{n+nn}{sm}
+         \PY{k+kn}{import} \PY{n+nn}{statsmodels}\PY{n+nn}{.}\PY{n+nn}{formula}\PY{n+nn}{.}\PY{n+nn}{api} \PY{k}{as} \PY{n+nn}{smf}
+         \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+         \PY{k+kn}{from} \PY{n+nn}{statsmodels}\PY{n+nn}{.}\PY{n+nn}{regression}\PY{n+nn}{.}\PY{n+nn}{quantile\PYZus{}regression} \PY{k}{import} \PY{n}{QuantReg}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}142}]:} \PY{k+kn}{from} \PY{n+nn}{matplotlib} \PY{k}{import} \PY{n}{pyplot}
-          \PY{k+kn}{from} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{import} \PY{n}{figure}
+{\color{incolor}In [{\color{incolor}20}]:} \PY{n}{mod} \PY{o}{=} \PY{n}{smf}\PY{o}{.}\PY{n}{quantreg}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{LOGWAGE \PYZti{} EDUC + POTEXPER}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{raw\PYZus{}data}\PY{p}{)}
+         \PY{n}{res} \PY{o}{=} \PY{n}{mod}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{q}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{3}\PY{p}{)}
+         \PY{n}{res}\PY{o}{.}\PY{n}{summary}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}20}]:} <class 'statsmodels.iolib.summary.Summary'>
+         """
+                                  QuantReg Regression Results                          
+         ==============================================================================
+         Dep. Variable:                LOGWAGE   Pseudo R-squared:              0.08548
+         Model:                       QuantReg   Bandwidth:                     0.07576
+         Method:                 Least Squares   Sparsity:                        1.282
+         Date:                Tue, 12 Mar 2019   No. Observations:                17919
+         Time:                        01:33:39   Df Residuals:                    17916
+                                                 Df Model:                            2
+         ==============================================================================
+                          coef    std err          t      P>|t|      [0.025      0.975]
+         ------------------------------------------------------------------------------
+         Intercept      0.7279      0.033     21.836      0.000       0.663       0.793
+         EDUC           0.0830      0.002     34.891      0.000       0.078       0.088
+         POTEXPER       0.0364      0.001     32.200      0.000       0.034       0.039
+         ==============================================================================
+         """
+\end{Verbatim}
+            
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}143}]:} \PY{n}{bins} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{)}
-          
-          \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{N Error Case:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-          
-          \PY{n}{figure}\PY{p}{(}\PY{n}{num}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,} \PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{16}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{80}\PY{p}{,} \PY{n}{facecolor}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{w}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{edgecolor}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{k}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-          \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{:}
-              \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{n=}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{sample\PYZus{}sizes}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, mean=}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{coef\PYZus{}big\PYZus{}mat}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, var=}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{var}\PY{p}{(}\PY{n}{coef\PYZus{}big\PYZus{}mat}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, se=}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{math}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{var}\PY{p}{(}\PY{n}{coef\PYZus{}big\PYZus{}mat}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{)}
-              \PY{n}{pyplot}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{coef\PYZus{}big\PYZus{}mat}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{bins}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{n+nb}{str}\PY{p}{(}\PY{n}{sample\PYZus{}sizes}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{p}{)}
-          \PY{n}{pyplot}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{upper right}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-          \PY{n}{pyplot}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
-          
-          \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{T Error Case:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-              
-          \PY{n}{figure}\PY{p}{(}\PY{n}{num}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,} \PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{16}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{80}\PY{p}{,} \PY{n}{facecolor}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{w}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{edgecolor}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{k}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-          \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{:}
-              \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{n=}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{sample\PYZus{}sizes}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, mean=}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{coef\PYZus{}big\PYZus{}mat}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, var=}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{var}\PY{p}{(}\PY{n}{coef\PYZus{}big\PYZus{}mat}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, se=}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{math}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{var}\PY{p}{(}\PY{n}{coef\PYZus{}big\PYZus{}mat}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{)}
-              \PY{n}{pyplot}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{coef\PYZus{}big\PYZus{}mat}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{bins}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{n+nb}{str}\PY{p}{(}\PY{n}{sample\PYZus{}sizes}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{p}{)}
-          \PY{n}{pyplot}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{upper right}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-          \PY{n}{pyplot}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}21}]:} \PY{n}{res} \PY{o}{=} \PY{n}{mod}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{q}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{5}\PY{p}{)}
+         \PY{n}{res}\PY{o}{.}\PY{n}{summary}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}21}]:} <class 'statsmodels.iolib.summary.Summary'>
+         """
+                                  QuantReg Regression Results                          
+         ==============================================================================
+         Dep. Variable:                LOGWAGE   Pseudo R-squared:               0.1063
+         Model:                       QuantReg   Bandwidth:                     0.08266
+         Method:                 Least Squares   Sparsity:                        1.109
+         Date:                Tue, 12 Mar 2019   No. Observations:                17919
+         Time:                        01:33:39   Df Residuals:                    17916
+                                                 Df Model:                            2
+         ==============================================================================
+                          coef    std err          t      P>|t|      [0.025      0.975]
+         ------------------------------------------------------------------------------
+         Intercept      0.6945      0.031     22.190      0.000       0.633       0.756
+         EDUC           0.1012      0.002     45.843      0.000       0.097       0.106
+         POTEXPER       0.0410      0.001     39.906      0.000       0.039       0.043
+         ==============================================================================
+         """
+\end{Verbatim}
+            
     \begin{Verbatim}[commandchars=\\\{\}]
-N Error Case:
-n=25, mean=2.012488983333248, var=0.05249862604346628, se=0.2291257865092148
-n=50, mean=2.004038638956284, var=0.028643210231471507, se=0.16924305076271673
-n=100, mean=1.9998946283499164, var=0.01354834677651397, se=0.1163973658486908
-
-    \end{Verbatim}
-
-    \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_27_1.png}
-    \end{center}
-    { \hspace*{\fill} \\}
-    
-    \begin{Verbatim}[commandchars=\\\{\}]
-T Error Case:
-n=25, mean=2.0060822548285806, var=0.10567402834654102, se=0.32507541947452906
-n=50, mean=2.0113618504889645, var=0.05352231792474029, se=0.23134890949546377
-n=100, mean=1.9884132856956598, var=0.02630018530277698, se=0.16217331871419843
-
-    \end{Verbatim}
-
-    \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_27_3.png}
-    \end{center}
-    { \hspace*{\fill} \\}
-    
-    \section{Question \#3(b)}\label{question-3b}
-
-    \subsubsection{Z Statistics}\label{z-statistics}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}144}]:} \PY{n}{bins} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{55}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{)}
-          
-          \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{N Error Case:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-          
-          \PY{n}{figure}\PY{p}{(}\PY{n}{num}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,} \PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{16}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{80}\PY{p}{,} \PY{n}{facecolor}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{w}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{edgecolor}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{k}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-          \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{:}
-              \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{n=}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{sample\PYZus{}sizes}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, mean=}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{z\PYZus{}big\PYZus{}mat}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, var=}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{var}\PY{p}{(}\PY{n}{z\PYZus{}big\PYZus{}mat}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{)}
-              \PY{n}{count} \PY{o}{=} \PY{l+m+mi}{0}
-              \PY{k}{for} \PY{n}{element} \PY{o+ow}{in} \PY{n}{z\PYZus{}big\PYZus{}mat}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{:}
-                  \PY{k}{if} \PY{p}{(}\PY{n}{element} \PY{o}{\PYZgt{}} \PY{l+m+mf}{1.96} \PY{o+ow}{or} \PY{n}{element} \PY{o}{\PYZlt{}} \PY{o}{\PYZhy{}}\PY{l+m+mf}{1.96}\PY{p}{)}\PY{p}{:}
-                      \PY{n}{count} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
-              \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{size of test:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n}{count}\PY{o}{/}\PY{l+m+mi}{1000}\PY{p}{)}
-              \PY{n}{pyplot}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{z\PYZus{}big\PYZus{}mat}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{bins}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{n+nb}{str}\PY{p}{(}\PY{n}{sample\PYZus{}sizes}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{p}{)}
-          \PY{n}{pyplot}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{upper right}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-          \PY{n}{pyplot}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
-          
-          \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{T Error Case:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-              
-          \PY{n}{figure}\PY{p}{(}\PY{n}{num}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,} \PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{16}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{80}\PY{p}{,} \PY{n}{facecolor}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{w}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{edgecolor}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{k}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-          \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{:}
-              \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{n=}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{sample\PYZus{}sizes}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, mean=}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{z\PYZus{}big\PYZus{}mat}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, var=}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{var}\PY{p}{(}\PY{n}{z\PYZus{}big\PYZus{}mat}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{)}
-              \PY{n}{count} \PY{o}{=} \PY{l+m+mi}{0}
-              \PY{k}{for} \PY{n}{element} \PY{o+ow}{in} \PY{n}{z\PYZus{}big\PYZus{}mat}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{:}
-                  \PY{k}{if} \PY{p}{(}\PY{n}{element} \PY{o}{\PYZgt{}} \PY{l+m+mf}{1.96} \PY{o+ow}{or} \PY{n}{element} \PY{o}{\PYZlt{}} \PY{o}{\PYZhy{}}\PY{l+m+mf}{1.96}\PY{p}{)}\PY{p}{:}
-                      \PY{n}{count} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
-              \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{size of test:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n}{count}\PY{o}{/}\PY{l+m+mi}{1000}\PY{p}{)}
-              \PY{n}{pyplot}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{z\PYZus{}big\PYZus{}mat}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{bins}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{n+nb}{str}\PY{p}{(}\PY{n}{sample\PYZus{}sizes}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{p}{)}
-          \PY{n}{pyplot}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{upper right}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-          \PY{n}{pyplot}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}22}]:} \PY{n}{res} \PY{o}{=} \PY{n}{mod}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{q}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{9}\PY{p}{)}
+         \PY{n}{res}\PY{o}{.}\PY{n}{summary}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}22}]:} <class 'statsmodels.iolib.summary.Summary'>
+         """
+                                  QuantReg Regression Results                          
+         ==============================================================================
+         Dep. Variable:                LOGWAGE   Pseudo R-squared:               0.1102
+         Model:                       QuantReg   Bandwidth:                     0.06699
+         Method:                 Least Squares   Sparsity:                        2.498
+         Date:                Tue, 12 Mar 2019   No. Observations:                17919
+         Time:                        01:33:39   Df Residuals:                    17916
+                                                 Df Model:                            2
+         ==============================================================================
+                          coef    std err          t      P>|t|      [0.025      0.975]
+         ------------------------------------------------------------------------------
+         Intercept      1.2689      0.042     30.052      0.000       1.186       1.352
+         EDUC           0.0989      0.003     33.584      0.000       0.093       0.105
+         POTEXPER       0.0411      0.001     31.829      0.000       0.039       0.044
+         ==============================================================================
+         """
+\end{Verbatim}
+            
     \begin{Verbatim}[commandchars=\\\{\}]
-N Error Case:
-n=25, mean=17.268458433839506, var=6.4753934834130495
-size of test: 0.0
-n=50, mean=24.478947133064747, var=6.603008365729441
-size of test: 0.0
-n=100, mean=34.689623939681276, var=6.482227300655119
-size of test: 0.0
-
-    \end{Verbatim}
-
-    \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_30_1.png}
-    \end{center}
-    { \hspace*{\fill} \\}
-    
-    \begin{Verbatim}[commandchars=\\\{\}]
-T Error Case:
-n=25, mean=17.21294748809783, var=10.290138070588648
-size of test: 0.0
-n=50, mean=24.57051460244579, var=10.509378822227127
-size of test: 0.0
-n=100, mean=34.48750148998313, var=10.095753493509088
-size of test: 0.0
-
-    \end{Verbatim}
-
-    \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_30_3.png}
-    \end{center}
-    { \hspace*{\fill} \\}
-    
-    \subsubsection{T Statistics}\label{t-statistics}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}145}]:} \PY{n}{bins} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{45}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{)}
-          
-          \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{N Error Case:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-          
-          \PY{n}{figure}\PY{p}{(}\PY{n}{num}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,} \PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{16}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{80}\PY{p}{,} \PY{n}{facecolor}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{w}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{edgecolor}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{k}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-          \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{:}
-              \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{n=}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{sample\PYZus{}sizes}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, mean=}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{t\PYZus{}big\PYZus{}mat}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, var=}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{var}\PY{p}{(}\PY{n}{t\PYZus{}big\PYZus{}mat}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{)}
-              \PY{n}{count} \PY{o}{=} \PY{l+m+mi}{0}
-              \PY{k}{for} \PY{n}{element} \PY{o+ow}{in} \PY{n}{t\PYZus{}big\PYZus{}mat}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{:}
-                  \PY{k}{if} \PY{p}{(}\PY{n}{element} \PY{o}{\PYZgt{}} \PY{l+m+mf}{12.706} \PY{o+ow}{or} \PY{n}{element} \PY{o}{\PYZlt{}} \PY{o}{\PYZhy{}}\PY{l+m+mf}{12.706}\PY{p}{)}\PY{p}{:}
-                      \PY{n}{count} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
-              \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{size of test:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n}{count}\PY{o}{/}\PY{l+m+mi}{1000}\PY{p}{)}
-              \PY{n}{pyplot}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{z\PYZus{}big\PYZus{}mat}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{bins}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{n+nb}{str}\PY{p}{(}\PY{n}{sample\PYZus{}sizes}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{p}{)}
-          \PY{n}{pyplot}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{upper right}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-          \PY{n}{pyplot}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
-          
-          \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{T Error Case:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-              
-          \PY{n}{figure}\PY{p}{(}\PY{n}{num}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,} \PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{16}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{80}\PY{p}{,} \PY{n}{facecolor}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{w}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{edgecolor}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{k}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-          \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{:}
-              \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{n=}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{sample\PYZus{}sizes}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, mean=}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{t\PYZus{}big\PYZus{}mat}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, var=}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{var}\PY{p}{(}\PY{n}{t\PYZus{}big\PYZus{}mat}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{)}
-              \PY{n}{count} \PY{o}{=} \PY{l+m+mi}{0}
-              \PY{k}{for} \PY{n}{element} \PY{o+ow}{in} \PY{n}{t\PYZus{}big\PYZus{}mat}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{:}
-                  \PY{k}{if} \PY{p}{(}\PY{n}{element} \PY{o}{\PYZgt{}} \PY{l+m+mf}{12.706} \PY{o+ow}{or} \PY{n}{element} \PY{o}{\PYZlt{}} \PY{o}{\PYZhy{}}\PY{l+m+mf}{12.706}\PY{p}{)}\PY{p}{:}
-                      \PY{n}{count} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
-              \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{size of test:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n}{count}\PY{o}{/}\PY{l+m+mi}{1000}\PY{p}{)}
-              \PY{n}{pyplot}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{z\PYZus{}big\PYZus{}mat}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{bins}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{n+nb}{str}\PY{p}{(}\PY{n}{sample\PYZus{}sizes}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{p}{)}
-          \PY{n}{pyplot}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{upper right}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-          \PY{n}{pyplot}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}23}]:} \PY{n}{LS} \PY{o}{=} \PY{n}{smf}\PY{o}{.}\PY{n}{ols}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{LOGWAGE \PYZti{} EDUC + POTEXPER}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{raw\PYZus{}data}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{p}{)}
+         \PY{n}{LS}\PY{o}{.}\PY{n}{summary}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-N Error Case:
-n=25, mean=8.735152019547114, var=3.3629344001402646
-size of test: 0.968
-n=50, mean=12.228941819914041, var=3.263578798541486
-size of test: 0.635
-n=100, mean=17.351736876535266, var=3.5030257513385066
-size of test: 0.0020000000000000018
-
-    \end{Verbatim}
-
-    \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_32_1.png}
-    \end{center}
-    { \hspace*{\fill} \\}
-    
-    \begin{Verbatim}[commandchars=\\\{\}]
-T Error Case:
-n=25, mean=6.627049466024269, var=4.000635431527382
-size of test: 0.991
-n=50, mean=9.186082838319468, var=4.161971560960327
-size of test: 0.957
-n=100, mean=12.504484595267229, var=4.389229381841637
-size of test: 0.5329999999999999
-
-    \end{Verbatim}
-
-    \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_32_3.png}
-    \end{center}
-    { \hspace*{\fill} \\}
-    
-    \section{Question \#3(c)}\label{question-3c}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}146}]:} \PY{n}{sample\PYZus{}sizes} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{25}\PY{p}{,} \PY{l+m+mi}{50}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{]} \PY{c+c1}{\PYZsh{}size of sample}
-          \PY{c+c1}{\PYZsh{} y = 4 + 2 * x + error}
-          \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{N Error Case:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-          \PY{n}{sample\PYZus{}X} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{uniform}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{25}\PY{p}{)}
-          \PY{n}{sample\PYZus{}n\PYZus{}error} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{normal}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{25}\PY{p}{)}
-          \PY{n}{sample\PYZus{}y\PYZus{}n} \PY{o}{=} \PY{l+m+mi}{4} \PY{o}{+} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{sample\PYZus{}X} \PY{o}{+} \PY{n}{sample\PYZus{}n\PYZus{}error}
-          \PY{n}{result\PYZus{}original} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{OLS}\PY{p}{(}\PY{n}{sample\PYZus{}y\PYZus{}n}\PY{p}{,} \PY{n}{sm}\PY{o}{.}\PY{n}{add\PYZus{}constant}\PY{p}{(}\PY{n}{sample\PYZus{}X}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{p}{)}
-          \PY{n}{beta\PYZus{}1} \PY{o}{=} \PY{n}{result\PYZus{}original}\PY{o}{.}\PY{n}{params}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
-          \PY{n}{beta\PYZus{}2} \PY{o}{=} \PY{n}{result\PYZus{}original}\PY{o}{.}\PY{n}{params}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
-          \PY{n}{u\PYZus{}hat} \PY{o}{=} \PY{n}{sample\PYZus{}y\PYZus{}n} \PY{o}{\PYZhy{}} \PY{n}{beta\PYZus{}1} \PY{o}{\PYZhy{}} \PY{n}{beta\PYZus{}2} \PY{o}{*} \PY{n}{sample\PYZus{}X}
-          
-          \PY{n}{coef} \PY{o}{=} \PY{p}{[}\PY{p}{]}
-          \PY{k}{for} \PY{n}{t} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1000}\PY{p}{)}\PY{p}{:}
-              \PY{n}{u\PYZus{}star} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{choice}\PY{p}{(}\PY{n}{u\PYZus{}hat}\PY{p}{,} \PY{l+m+mi}{25}\PY{p}{)}
-              \PY{n}{y\PYZus{}star} \PY{o}{=} \PY{n}{beta\PYZus{}1} \PY{o}{+} \PY{n}{beta\PYZus{}2} \PY{o}{*} \PY{n}{sample\PYZus{}X} \PY{o}{+} \PY{n}{u\PYZus{}star}
-              \PY{n}{result\PYZus{}bootstrap} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{OLS}\PY{p}{(}\PY{n}{y\PYZus{}star}\PY{p}{,} \PY{n}{sm}\PY{o}{.}\PY{n}{add\PYZus{}constant}\PY{p}{(}\PY{n}{sample\PYZus{}X}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{p}{)}
-              \PY{n}{coef}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{result\PYZus{}bootstrap}\PY{o}{.}\PY{n}{params}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
-          \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{sample beta:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n+nb}{str}\PY{p}{(}\PY{n}{beta\PYZus{}2}\PY{p}{)}\PY{p}{)}    
-          \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{bootstrap beta:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n+nb}{str}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{coef}\PY{p}{)}\PY{p}{)}\PY{p}{)}
-          \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{bootstrap se:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n+nb}{str}\PY{p}{(}\PY{n}{math}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{var}\PY{p}{(}\PY{n}{coef}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{)}
-          
-          
-          \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{T Error Case:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-          \PY{n}{sample\PYZus{}X} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{uniform}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{25}\PY{p}{)}
-          \PY{n}{sample\PYZus{}t\PYZus{}error} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{standard\PYZus{}t}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{25}\PY{p}{)}
-          \PY{n}{sample\PYZus{}y\PYZus{}t} \PY{o}{=} \PY{l+m+mi}{4} \PY{o}{+} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{sample\PYZus{}X} \PY{o}{+} \PY{n}{sample\PYZus{}t\PYZus{}error}
-          \PY{n}{result\PYZus{}original} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{OLS}\PY{p}{(}\PY{n}{sample\PYZus{}y\PYZus{}t}\PY{p}{,} \PY{n}{sm}\PY{o}{.}\PY{n}{add\PYZus{}constant}\PY{p}{(}\PY{n}{sample\PYZus{}X}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{p}{)}
-          \PY{n}{beta\PYZus{}1} \PY{o}{=} \PY{n}{result\PYZus{}original}\PY{o}{.}\PY{n}{params}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
-          \PY{n}{beta\PYZus{}2} \PY{o}{=} \PY{n}{result\PYZus{}original}\PY{o}{.}\PY{n}{params}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
-          \PY{n}{u\PYZus{}hat} \PY{o}{=} \PY{n}{sample\PYZus{}y\PYZus{}n} \PY{o}{\PYZhy{}} \PY{n}{beta\PYZus{}1} \PY{o}{\PYZhy{}} \PY{n}{beta\PYZus{}2} \PY{o}{*} \PY{n}{sample\PYZus{}X}
-          
-          \PY{n}{coef} \PY{o}{=} \PY{p}{[}\PY{p}{]}
-          \PY{k}{for} \PY{n}{t} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1000}\PY{p}{)}\PY{p}{:}
-              \PY{n}{u\PYZus{}star} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{choice}\PY{p}{(}\PY{n}{u\PYZus{}hat}\PY{p}{,} \PY{l+m+mi}{25}\PY{p}{)}
-              \PY{n}{y\PYZus{}star} \PY{o}{=} \PY{n}{beta\PYZus{}1} \PY{o}{+} \PY{n}{beta\PYZus{}2} \PY{o}{*} \PY{n}{sample\PYZus{}X} \PY{o}{+} \PY{n}{u\PYZus{}star}
-              \PY{n}{result\PYZus{}bootstrap} \PY{o}{=} \PY{n}{sm}\PY{o}{.}\PY{n}{OLS}\PY{p}{(}\PY{n}{y\PYZus{}star}\PY{p}{,} \PY{n}{sm}\PY{o}{.}\PY{n}{add\PYZus{}constant}\PY{p}{(}\PY{n}{sample\PYZus{}X}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{p}{)}
-              \PY{n}{coef}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{result\PYZus{}bootstrap}\PY{o}{.}\PY{n}{params}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
-          \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{sample beta:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n+nb}{str}\PY{p}{(}\PY{n}{beta\PYZus{}2}\PY{p}{)}\PY{p}{)}    
-          \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{bootstrap beta:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n+nb}{str}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{coef}\PY{p}{)}\PY{p}{)}\PY{p}{)}
-          \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{bootstrap se:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n+nb}{str}\PY{p}{(}\PY{n}{math}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{var}\PY{p}{(}\PY{n}{coef}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}23}]:} <class 'statsmodels.iolib.summary.Summary'>
+         """
+                                     OLS Regression Results                            
+         ==============================================================================
+         Dep. Variable:                LOGWAGE   R-squared:                       0.158
+         Model:                            OLS   Adj. R-squared:                  0.158
+         Method:                 Least Squares   F-statistic:                     1687.
+         Date:                Tue, 12 Mar 2019   Prob (F-statistic):               0.00
+         Time:                        01:33:39   Log-Likelihood:                -12444.
+         No. Observations:               17919   AIC:                         2.489e+04
+         Df Residuals:                   17916   BIC:                         2.492e+04
+         Df Model:                           2                                         
+         Covariance Type:            nonrobust                                         
+         ==============================================================================
+                          coef    std err          t      P>|t|      [0.025      0.975]
+         ------------------------------------------------------------------------------
+         Intercept      0.7942      0.027     29.028      0.000       0.741       0.848
+         EDUC           0.0939      0.002     48.636      0.000       0.090       0.098
+         POTEXPER       0.0374      0.001     41.613      0.000       0.036       0.039
+         ==============================================================================
+         Omnibus:                     1067.458   Durbin-Watson:                   0.790
+         Prob(Omnibus):                  0.000   Jarque-Bera (JB):             1863.394
+         Skew:                          -0.464   Prob(JB):                         0.00
+         Kurtosis:                       4.279   Cond. No.                         117.
+         ==============================================================================
+         
+         Warnings:
+         [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+         """
 \end{Verbatim}
-
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-N Error Case:
-sample beta: 1.7102102215594508
-bootstrap beta: 1.7159064524085028
-bootstrap se: 0.1928669790849424
-T Error Case:
-sample beta: 1.2898398249410796
-bootstrap beta: 1.2824862775758408
-bootstrap se: 0.5631121845139818
-
-    \end{Verbatim}
-
+            
 
     % Add a bibliography block to the postdoc
     
